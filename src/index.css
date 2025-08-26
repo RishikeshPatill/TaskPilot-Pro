@@ -3,3 +3,7 @@
 #tasklist::-webkit-scrollbar{
     display: none;
 }
+body {
+  background-color: #F2F9EF; 
+  margin: 0; 
+}

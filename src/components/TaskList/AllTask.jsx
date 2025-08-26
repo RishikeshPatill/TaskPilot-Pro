@@ -3,9 +3,13 @@ import Header from '../Essentials/Header'
 import AllTaskList from './AllTaskList'
 
 const AllTask = () => {
+
+  
+
   return (
-    <div className='p-6 space-y-6 h-screen'>
+    <div className='h-screen'>
       <Header/>
+      <div class="h-20"></div>
       <AllTaskList/>
     </div>
   )

@@ -5,6 +5,8 @@ import AdminDashboard from './components/Dashboard/AdminDashboard'
 import AllTask from './components/TaskList/AllTask'
 import { getLocalStorage, setLocalStorage } from './utils/LocalStorage'
 import { AuthContext } from './context/AuthProvider'
+import { Route, Routes } from 'react-router-dom'
+import CreateTask from './components/TaskList/CreateTask'
 
 
 const App = () => {
@@ -14,7 +16,7 @@ const App = () => {
   const authData=useContext(AuthContext)
   
   useEffect(() => {
-      const loggedInUser = localStorage.getItem("loggeddInUser")
+      const loggedInUser = localStorage.getItem("loggedInUser")
       if(loggedInUser){
         const userData=JSON.parse(loggedInUser)
         setUser(userData.role)
@@ -44,20 +46,26 @@ const App = () => {
 
 
   // useEffect(() => {
-  //   // setLocalStorage()
+  //   setLocalStorage()
   //   getLocalStorage()
   // },)
+return (
+  <Routes>
+    <Route
+      path="/"
+      element={
+        <>
+          {!user ? <Login handleLogin={handleLogin} /> : ''}
+          {user == 'admin' ? <AdminDashboard changeUser={setUser} /> : ''}
+          {user == 'employee' ? <EmployeeDashboard changeUser={setUser} data={loggedInUserData} /> : ''}
+        </>
+      }
+    />
+    <Route path="/allTask" element={<AllTask />} />
+    <Route path="/adminDashboard" element={<AdminDashboard />} />
+  </Routes>
+)
 
-  return (
-    <>
-    {!user ? <Login handleLogin={handleLogin}/> : ''}
-        {user =='admin' ? <AdminDashboard/> : ''}
-        {user=='employee' ? <EmployeeDashboard data={loggedInUserData}/>:''}
-    {/* <EmployeeDashboard/> */}
-    {/* <AdminDashboard/> */}
-    {/* <AllTask/> */}
-    </>
-  )
 }
 
 export default App

@@ -4,13 +4,14 @@ import TaskCount from '../Essentials/TaskCount'
 import TaskList from '../TaskList/TaskList'
 
 
-const EmployeeDashboard = ({data}) => {
+const EmployeeDashboard = (props) => {
   return (
-    <div className='p-6 space-y-6 h-screen'>
-       <Header data={data}/>
-       <TaskCount data={data}/>
+    <div className='p-8 space-y-4 h-screen'>
+       <Header changeUser={props.changeUser} data={props.data}/>
+       <div class="h-10"></div>
+       <TaskCount data={props.data}/>
        <h2 className='text-xl mb-6 underline text-black font-semibold'>All Pending Task</h2>
-       <TaskList data={data}/>
+       <TaskList data={props.data}/>
     </div>
   )
 }

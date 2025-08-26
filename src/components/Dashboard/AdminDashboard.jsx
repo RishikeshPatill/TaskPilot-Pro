@@ -1,11 +1,16 @@
 import React from 'react'
 import Header from '../Essentials/Header'
 import CreateTask from '../TaskList/CreateTask'
+import AllTaskList from '../TaskList/AllTaskList'
 
-const AdminDashboard = () => {
+const AdminDashboard = (props) => {
+
+  
+
   return (
-    <div className='p-6 space-y-6 h-screen'>
-      <Header/>
+    <div className='h-screen'>
+      <Header changeUser={props.changeUser}/>
+      <div class="h-20"></div>
       <CreateTask/>
     </div>
   )
