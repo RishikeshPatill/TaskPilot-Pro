@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 
 
-const Login = () => {
+const Login = ({handleLogin}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const submitHandler=(e)=>{
         e.preventDefault()
-        console.log("email is ",email)
-        console.log("password is ",password)
-        console.log("Form Submitted Successfully..!")
-
+        // console.log("email is ",email)
+        // console.log("password is ",password)
+        // console.log("Form Submitted Successfully..!")
+        handleLogin(email,password)
         setEmail('')
         setPassword('')
     }
 
   return (
-    <div className='h-screen w-screen flex items-center justify-center p-8 '>
+    <div className='h-screen w-screen flex bg-[#F2F9EF] items-center justify-center p-8 '>
       <div className='shadow-xl rounded-xl bg-white flex flex-col items-center w-full pl-8 pr-8 pt-12 pb-12 space-y-2 '>
             <h3 className='text-4xs text-black font-sans'>Welcome Back To</h3>
              <h3 className='text-4xl text-blue-500 font-bold'>TaskPilot-Pro</h3>
